@@ -1,7 +1,8 @@
 ;(function() {
 
 	var $newItem 	= $('#new-item'),
-			$list 		= $('#item-list');
+			$list 		= $('#item-list'),
+			$completedList = $('#completed-list');
 
 	window.todolist = {
 		initMain: function() {
@@ -14,6 +15,19 @@
 					todolist.saveHandler();
 				}
 			});
+
+			$list.delegate('li input.completed-chk', 'change', function() {
+				if($(this).is(":checked")) {
+					todolist.markAsComplete($(this).closest('li'));
+				}
+			});
+
+			$completedList.delegate('li input.completed-chk', 'change', function() {
+				if(!$(this).is(":checked")) {
+					todolist.markAsIncomplete($(this).closest('li'));
+				}
+			});
+
 			$newItem.focus();
 		},
 
@@ -26,21 +40,22 @@
 
 		saveItem: function(item) {
 			var li = document.createElement('li');
-			li.innerHTML = item;
+			li.innerHTML = item + todolist.buildCompleteCheckbox();
 			$list.append(li);
 		},
 
-		deleteItem: function() {
-
+		markAsComplete: function($elem) {
+			$elem.remove();
+			$completedList.append($elem);
 		},
 
-		buildDeleteLink: function() {
-			var div = document.createElement('div');
-			var link = document.createElement('a');
-			link.setAttribute('href', '#');
-			link.innerHTML = 'Delete';
-			div.appendChild(link);
-			return div;
+		markAsIncomplete: function($elem) {
+			$elem.remove();
+			$list.append($elem);
+		},
+
+		buildCompleteCheckbox: function() {
+			return "<input type='checkbox' name='complete' class='completed-chk' />"
 		}
 	}
 

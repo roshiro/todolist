@@ -17,35 +17,31 @@
     <![endif]-->
   </head>
   <body>
-    <div id='cssmenu'>
-      <ul>
-         <li class='active'><a href='index.html'><span>Home</span></a></li>
-         <li class='has-sub'><a href='#'><span>Products</span></a>
-            <ul>
-               <li class='has-sub'><a href='#'><span>Product 1</span></a>
-                  <ul>
-                     <li><a href='#'><span>Sub Item</span></a></li>
-                     <li class='last'><a href='#'><span>Sub Item</span></a></li>
-                  </ul>
-               </li>
-               <li class='has-sub'><a href='#'><span>Product 2</span></a>
-                  <ul>
-                     <li><a href='#'><span>Sub Item</span></a></li>
-                     <li class='last'><a href='#'><span>Sub Item</span></a></li>
-                  </ul>
-               </li>
-            </ul>
-         </li>
-         <li><a href='#'><span>About</span></a></li>
-         <li class='last'><a href='#'><span>Contact</span></a></li>
-      </ul>
-    </div>
     <div class="container">
-      <div class="page-header">
-        <h1>To-do List</h1>
+      <div id='cssmenu'>
+        <ul>
+           <li><a href='index.html'><span>INBOX</span></a></li>
+           <li class='active'><a href='#'><span>WORK</span></a></li>
+           <li><a href='#'><span>PERSONAL</span></a></li>
+           <li class='last'><a href='#'><span>TRAVEL</span></a></li>
+           <li class="add-new-list"><a href='#'><span>ADD A LIST...</span></a></li>
+        </ul>
       </div>
-      <p class="lead"><input type="text" id="new-item" placeholder="Add a new item"></p>
-      <ul id="item-list"></ul>
+      <div class="content">
+        <header>
+          <input type='text' placeholder="Search" class="search" />
+        </header>
+        <div class="list-content">
+          <div class="page-header">
+            <h1>To-do List</h1>
+          </div>
+          <p class="lead"><input type="text" id="new-item" placeholder="Add a new item"></p>
+          <ul id="item-list"></ul>
+
+          <h1>Completed Tasks</h1>
+          <ul id="completed-list"></ul>
+        </div>
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
