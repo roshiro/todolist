@@ -15,19 +15,20 @@ body {
 
 h1 {
   margin: 0 !important;
-  padding: 0 !important;
   font-size: 18px;
   font-weight: 200;
-  border-bottom: 1px solid #2e2e2e;
-  padding-bottom: 24px;
+  border-bottom: 1px solid #acacac;
+  padding-bottom: 12px;
 }
 
 #new-item {
   width: 100%;
-  height: 50px;
+  border-radius: 3px;
+  height: 46px;
+  border: 1px solid #c2c2c2;
   padding: 18px;
   box-sizing: border-box;
-  text-transform:uppercase;
+  text-transform: uppercase;
 }
 
 #item-list {
@@ -63,12 +64,13 @@ h1 {
   box-sizing: border-box;
 }
 #cssmenu {
-  width: 20%;
+  width: 250px;
   height: 100%;
   font-family: Helvetica, Arial, sans-serif;
   color: #ffffff;
   background-color: #ffffff;
   float:left;
+  border-right: 1px solid #dcdcdc;
 }
 #cssmenu ul ul {
   display: none;
@@ -78,8 +80,7 @@ h1 {
 }
 #cssmenu > ul > li > a {
   text-transform: uppercase;
-  padding-left: 38px;
-  padding: 22px 20px;
+  padding: 22px 40px;
   border-top: 1px solid #eaeaea;
   cursor: pointer;
   z-index: 2;
@@ -151,25 +152,38 @@ h1 {
 }
 
 .content {
-  float: right;
-  width: 80%;
+  float: left;
+  width: 83%;
 }
 
 .content header {
   width: 100%;
-  background-color: #383838;
+  background: #434343; /* Old browsers */
+  background: -moz-linear-gradient(top,  #434343 0%, #343434 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#434343), color-stop(100%,#343434)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #434343 0%,#343434 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #434343 0%,#343434 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #434343 0%,#343434 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #434343 0%,#343434 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#434343', endColorstr='#343434',GradientType=0 ); /* IE6-9 */
   position: relative;
+  height:58px;
   text-align: right;
 }
 
 .content header .search {
-  margin: 10px;
+  margin: 13px;
+  border-radius: 3px;
   padding: 8px;
+  border:none;
+  width: 250px;
 }
 
 .content .list-content {
-  padding: 20px;
+  padding: 50px;
 }
+
+.content ul#completed-list {opacity: 0.3;}
 
 .content ul#completed-list,
 .content ul#item-list {
@@ -178,11 +192,12 @@ h1 {
 
 .content ul li {
   list-style: none;
+  font-size: 12px;
   border: 1px solid lightgrey;
   padding: 13px;
   background-color: white;
   border-left: 16px solid lightgrey;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   text-transform:uppercase;
 }
 
