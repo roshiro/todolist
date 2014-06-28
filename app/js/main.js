@@ -6,7 +6,8 @@
 
 	window.todolist = {
 		initMain: function() {
-			todolist.attachEvents();
+			window.todolist.attachEvents();
+			window.todolist.loadTasks();
 		},
 
 		attachEvents: function() {
@@ -31,6 +32,12 @@
 			$newItem.focus();
 		},
 
+		loadTasks: function() {
+			window.connection.getTasks(function(tasks) {
+				window.todolist.renderTasks(tasks);
+			});
+		},
+
 		saveHandler: function() {
 			if($newItem.val() != "") {
 				todolist.saveItem($newItem.val());
@@ -39,10 +46,20 @@
 		},
 
 		saveItem: function(item) {
-			var li = document.createElement('li');
-			li.innerHTML = item + todolist.buildCompleteCheckbox();
-			connection.addTask({text: item});
-			$list.append(li);
+			connection.addTask({text: item}, function(insertId) {
+				window.connection.getTaskById(insertId, function(item) {
+					window.todolist.renderTasks([item]);
+				});
+			});
+		},
+
+		renderTasks: function(tasks) {
+			var li;
+			for(var i=0; i<tasks.length; i++) {
+				li = document.createElement('li');
+				li.innerHTML = tasks[i].text + todolist.buildCompleteCheckbox();
+				$list.append(li);
+			}
 		},
 
 		markAsComplete: function($elem) {
