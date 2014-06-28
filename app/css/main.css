@@ -69,8 +69,8 @@ h1 {
   font-family: Helvetica, Arial, sans-serif;
   color: #ffffff;
   background-color: #ffffff;
-  float:left;
   border-right: 1px solid #dcdcdc;
+  position: fixed;
 }
 #cssmenu ul ul {
   display: none;
@@ -152,8 +152,9 @@ h1 {
 }
 
 .content {
-  float: left;
-  width: 83%;
+  height: 100%;
+  right: 0;
+  margin-left: 250px;
 }
 
 .content header {
@@ -180,7 +181,7 @@ h1 {
 }
 
 .content .list-content {
-  padding: 50px;
+  padding: 3% 5%;
 }
 
 .content ul#completed-list {opacity: 0.3;}

@@ -41,6 +41,7 @@
 		saveItem: function(item) {
 			var li = document.createElement('li');
 			li.innerHTML = item + todolist.buildCompleteCheckbox();
+			connection.addTask({text: item});
 			$list.append(li);
 		},
 
@@ -63,4 +64,5 @@
 
 $(function() {
 	window.todolist.initMain();
+	window.connection.getTasks();
 });
