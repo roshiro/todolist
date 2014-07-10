@@ -2,12 +2,14 @@
 
 	var $newItem 	= $('#new-item'),
 			$list 		= $('#item-list'),
-			$completedList = $('#completed-list');
+			$completedList = $('#completed-list'),
+			$menu = $('#left-menu');
 
 	window.todolist = {
 		initMain: function() {
 			window.todolist.attachEvents();
 			window.todolist.loadTasks();
+			window.todolist.attachLeftMenuEvents();
 		},
 
 		attachEvents: function() {
@@ -32,21 +34,41 @@
 			$newItem.focus();
 		},
 
+		attachLeftMenuEvents: function() {
+			$menu.find('li').delegate('a','click', function(ev) {
+				ev.preventDefault();
+				var $li = $(this).parent('li');
+
+				if(!$li.hasClass('active')) {
+					$menu.find('li').removeClass('active');
+					$li.addClass('active');
+					todolist.loadTasks();
+				}
+			});
+		},
+
 		loadTasks: function() {
-			window.connection.getTasks(function(tasks) {
+			var activeListId = todolist.getSelectedListId();
+
+			window.connection.getTasksByList(activeListId, function(tasks) {
+				window.todolist.clearTasks();
 				window.todolist.renderTasks(tasks);
 			});
 		},
 
+		getSelectedListId: function() {
+			return $menu.find('li.active').attr('data-id');
+		},
+
 		saveHandler: function() {
 			if($newItem.val() != "") {
-				todolist.saveItem($newItem.val());
+				todolist.saveItem($newItem.val(), todolist.getSelectedListId());
 				$newItem.val("");
 			}
 		},
 
-		saveItem: function(item) {
-			connection.addTask({text: item}, function(insertId) {
+		saveItem: function(item, listId) {
+			connection.addTask({text: item, list_id: listId}, function(insertId) {
 				window.connection.getTaskById(insertId, function(item) {
 					window.todolist.renderTasks([item]);
 				});
@@ -66,6 +88,11 @@
 					$completedList.append(li);
 				}
 			}
+		},
+
+		clearTasks: function() {
+			$list.empty();
+			$completedList.empty();
 		},
 
 		/**

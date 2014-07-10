@@ -2,18 +2,26 @@
 
   var db,
   open = function() {
-    var size = 2 * 1024 * 1024;
+    var size = 2 * 1024;
     db = openDatabase('todolistdb', '1.0', 'ToDo List DB', size);
     createTables();
   },
 
   createTables = function() {
     conn().transaction(function (tx) {
-      // tx.executeSql("DROP TABLE IF EXISTS task;");
+      tx.executeSql("DROP TABLE IF EXISTS task;");
+      tx.executeSql("CREATE TABLE IF NOT EXISTS " +
+      "list ( " +
+      "id         INTEGER PRIMARY KEY, " +
+      "text       TEXT, " +
+      "created_at INTEGER " +
+      "); ");
+
       tx.executeSql("CREATE TABLE IF NOT EXISTS " +
       "task ( " +
       "id         INTEGER PRIMARY KEY, " +
       "text       TEXT, " +
+      "list_id    INTEGER, " +
       "completed  INTEGER DEFAULT 0, " +
       "created_at INTEGER " +
       "); ");
@@ -36,7 +44,7 @@
     */
     addTask: function(data, callback) {
       conn().transaction(function(tx) {
-        tx.executeSql("INSERT INTO task (id, text, created_at) VALUES (NULL, ?, date('now'))", [data.text],
+        tx.executeSql("INSERT INTO task (id, text, list_id, created_at) VALUES (NULL, ?, ?, date('now'))", [data.text, data.list_id],
         function (tx, result) {
           callback(result.insertId);
         });
@@ -50,6 +58,21 @@
     getTasks: function(callback) {
       conn().transaction(function(tx) {
         tx.executeSql(("SELECT * FROM task"), [], function (tx, results) {
+          if(callback) {
+            callback(window.connection.formatSQLResultSet(results));
+          }
+        });
+      });
+    },
+
+    /**
+    * Retrieves all the tasks by list ID.
+    * @param {Number} List ID
+    * @param {Function} callback to be called with results from query
+    */
+    getTasksByList: function(listId, callback) {
+      conn().transaction(function(tx) {
+        tx.executeSql(("SELECT * FROM task WHERE list_id = ?"), [listId], function (tx, results) {
           if(callback) {
             callback(window.connection.formatSQLResultSet(results));
           }

@@ -48,10 +48,10 @@ h1 {
 
 <!--Navigation--->
 
-#cssmenu,
-#cssmenu ul,
-#cssmenu ul li,
-#cssmenu ul li a {
+#left-menu,
+#left-menu ul,
+#left-menu ul li,
+#left-menu ul li a {
   margin: 0;
   padding: 0;
   border: 0;
@@ -63,7 +63,7 @@ h1 {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-#cssmenu {
+#left-menu {
   width: 250px;
   height: 100%;
   font-family: Helvetica, Arial, sans-serif;
@@ -72,13 +72,13 @@ h1 {
   border-right: 1px solid #dcdcdc;
   position: fixed;
 }
-#cssmenu ul ul {
+#left-menu ul ul {
   display: none;
 }
 .align-right {
   float: right;
 }
-#cssmenu > ul > li > a {
+#left-menu > ul > li > a {
   text-transform: uppercase;
   padding: 22px 40px;
   border-top: 1px solid #eaeaea;
@@ -91,19 +91,15 @@ h1 {
   background: #ffffff;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
-#cssmenu > ul > li > a:hover,
-#cssmenu > ul > li.active > a,
-#cssmenu > ul > li.open > a {
+#left-menu > ul > li > a:hover,
+#left-menu > ul > li.active > a,
+#left-menu > ul > li.open > a {
   color: #41a940;
   background: #d9eed9;
 }
-#cssmenu > ul > li.open > a {
+#left-menu > ul > li.open > a {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.15);
   border-bottom: 1px solid #1682ba;
-}
-#cssmenu > ul > li:last-child > a,
-#cssmenu > ul > li.last > a {
-
 }
 .holder {
   width: 0;
@@ -132,9 +128,9 @@ h1 {
   border-top: 2px solid #ffffff;
   border-left: 2px solid #ffffff;
 }
-#cssmenu > ul > li > a:hover > span::after,
-#cssmenu > ul > li.active > a > span::after,
-#cssmenu > ul > li.open > a > span::after {
+#left-menu > ul > li > a:hover > span::after,
+#left-menu > ul > li.active > a > span::after,
+#left-menu > ul > li.open > a > span::after {
   border-color: #eeeeee;
 }
 .holder::before {
