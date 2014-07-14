@@ -1,6 +1,8 @@
 # TO-DO LIST
 
-Todo List is a desktop application built in HTML5, Javascript and CSS. It relies on node-webkit as runtime to run it as native desktop app.
+Todo List is a desktop application written 100% in HTML5, Javascript and CSS. It relies on node-webkit as runtime to run it as native desktop app.
+
+Persistence using Web SQL.
 
 ![TODO List](http://roshiro.github.io/todolist/demo.png)
 
