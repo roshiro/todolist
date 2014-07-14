@@ -9,7 +9,7 @@
 
   createTables = function() {
     conn().transaction(function (tx) {
-      tx.executeSql("DROP TABLE IF EXISTS task;");
+      // tx.executeSql("DROP TABLE IF EXISTS task;");
       tx.executeSql("CREATE TABLE IF NOT EXISTS " +
       "list ( " +
       "id         INTEGER PRIMARY KEY, " +

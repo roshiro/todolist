@@ -31,21 +31,6 @@ h1 {
   text-transform: uppercase;
 }
 
-#item-list {
-  display: block;
-  list-style-type: disc;
-  -webkit-margin-before: 1em;
-  -webkit-margin-after: 1em;
-  -webkit-margin-start: 0px;
-  -webkit-margin-end: 0px;
-  -webkit-padding-start: 40px;
-}
-
-#item-list li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-}
-
 <!--Navigation--->
 
 #left-menu,
@@ -72,12 +57,13 @@ h1 {
   border-right: 1px solid #dcdcdc;
   position: fixed;
 }
-#left-menu ul ul {
-  display: none;
-}
 .align-right {
   float: right;
 }
+#left-menu > ul > li.inbox {
+  background: url('../images/inbox.png') 12px 20px no-repeat;
+}
+
 #left-menu > ul > li > a {
   text-transform: uppercase;
   padding: 22px 40px;
@@ -88,14 +74,12 @@ h1 {
   font-weight: 500;
   text-decoration: none;
   color: #363636;
-  background: #ffffff;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
-#left-menu > ul > li > a:hover,
-#left-menu > ul > li.active > a,
-#left-menu > ul > li.open > a {
+#left-menu > ul > li.active,
+#left-menu > ul > li.open {
   color: #41a940;
-  background: #d9eed9;
+  background-color: #d9eed9;
 }
 #left-menu > ul > li.open > a {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.15);
