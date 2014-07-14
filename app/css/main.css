@@ -57,9 +57,6 @@ h1 {
   border-right: 1px solid #dcdcdc;
   position: fixed;
 }
-.align-right {
-  float: right;
-}
 #left-menu > ul > li.inbox {
   background: url('../images/inbox.png') 12px 20px no-repeat;
 }
@@ -76,53 +73,17 @@ h1 {
   color: #363636;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
-#left-menu > ul > li.active,
-#left-menu > ul > li.open {
+#left-menu > ul > li.active {
   color: #41a940;
   background-color: #d9eed9;
 }
-#left-menu > ul > li.open > a {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid #1682ba;
-}
-.holder {
-  width: 0;
-  height: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.holder::after,
-.holder::before {
-  display: block;
-  position: absolute;
-  content: '';
-  width: 6px;
-  height: 6px;
-  right: 20px;
-  z-index: 10;
-  -webkit-transform: rotate(-135deg);
-  -moz-transform: rotate(-135deg);
-  -ms-transform: rotate(-135deg);
-  -o-transform: rotate(-135deg);
-  transform: rotate(-135deg);
-}
-.holder::after {
-  top: 17px;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-}
 #left-menu > ul > li > a:hover > span::after,
-#left-menu > ul > li.active > a > span::after,
-#left-menu > ul > li.open > a > span::after {
+#left-menu > ul > li.active > a > span::after {
   border-color: #eeeeee;
 }
-.holder::before {
-  top: 18px;
-  border-top: 2px solid;
-  border-left: 2px solid;
-  border-top-color: inherit;
-  border-left-color: inherit;
+
+.align-right {
+  float: right;
 }
 
 .container {
